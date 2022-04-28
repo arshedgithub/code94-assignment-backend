@@ -58,11 +58,3 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
-
-// dummy object
-const obj = {
-  sku: "1",
-  name: "name",
-  quality: "56",
-  description: "description",
-};
