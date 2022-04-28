@@ -1,4 +1,4 @@
-const { Product } = require("../models/product");
+const Product = require("../models/product.js");
 const express = require("express");
 const router = express.Router();
 
@@ -17,9 +17,14 @@ router.post("/", async (req, res) => {
     description: req.body.description,
     image: req.body.image,
   });
-  await product.save();
 
-  res.send(product);
+  // error handling
+  try {
+    await product.save();
+    res.send(product);
+  } catch (err) {
+    res.send(err._message);
+  }
 });
 
 // editing products
@@ -53,3 +58,11 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+
+// dummy object
+const obj = {
+  sku: "1",
+  name: "name",
+  quality: "56",
+  description: "description",
+};

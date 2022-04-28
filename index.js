@@ -9,11 +9,10 @@ const connectDB = require("./config/db");
 const products = require("./routes/products");
 const users = require("./routes/users");
 
-app.use(express.json());
-app.use(cors());
-
 connectDB();
 
+app.use(express.json());
+app.use(cors());
 app.use("/api/products", products);
 app.use("/api/users", users);
 
